@@ -12,7 +12,7 @@ import SwiftData
 struct PflanzenApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Plant.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,7 @@ struct PflanzenApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PlantListView()
         }
         .modelContainer(sharedModelContainer)
     }

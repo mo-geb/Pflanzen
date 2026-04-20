@@ -1,0 +1,790 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld days" : {
+      "comment" : "Plant age: plural days",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Tage"
+          }
+        }
+      }
+    },
+    "%lld months" : {
+      "comment" : "Plant age: plural months",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Monate"
+          }
+        }
+      }
+    },
+    "%lld years" : {
+      "comment" : "Plant age: plural years",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Jahre"
+          }
+        }
+      }
+    },
+    "🎂" : {
+
+    },
+    "🎈" : {
+
+    },
+    "1 day" : {
+      "comment" : "Plant age: singular day",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Tag"
+          }
+        }
+      }
+    },
+    "1 month" : {
+      "comment" : "Plant age: singular month",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Monat"
+          }
+        }
+      }
+    },
+    "1 year" : {
+      "comment" : "Plant age: singular year",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Jahr"
+          }
+        }
+      }
+    },
+    "Add Photo" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto hinzufügen"
+          }
+        }
+      }
+    },
+    "Add Plant" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanze hinzufügen"
+          }
+        }
+      }
+    },
+    "Add your first plant." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge deine erste Pflanze hinzu."
+          }
+        }
+      }
+    },
+    "Are you sure? This action cannot be undone." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher? Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        }
+      }
+    },
+    "Automatic Reminders" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Erinnerungen"
+          }
+        }
+      }
+    },
+    "Birthday" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geburtstag"
+          }
+        }
+      }
+    },
+    "Camera" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        }
+      }
+    },
+    "Days" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tage"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
+    },
+    "Delete Plant" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanze löschen"
+          }
+        }
+      }
+    },
+    "Delete Plant?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanze löschen?"
+          }
+        }
+      }
+    },
+    "Details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        }
+      }
+    },
+    "Due in %lld days" : {
+      "comment" : "Plant card: watering status due in N days",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fällig in %lld Tagen"
+          }
+        }
+      }
+    },
+    "Due in 1 day" : {
+      "comment" : "Plant card: watering status due in 1 day",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fällig in 1 Tag"
+          }
+        }
+      }
+    },
+    "Due today" : {
+      "comment" : "Plant card: watering status when due today",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute fällig"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        }
+      }
+    },
+    "Every %lld days" : {
+      "comment" : "Watering frequency: every N days",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle %lld Tage"
+          }
+        }
+      }
+    },
+    "Every %lld months" : {
+      "comment" : "Watering frequency: every N months",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle %lld Monate"
+          }
+        }
+      }
+    },
+    "Every %lld weeks" : {
+      "comment" : "Watering frequency: every N weeks",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle %lld Wochen"
+          }
+        }
+      }
+    },
+    "Every day" : {
+      "comment" : "Watering frequency: every day",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Täglich"
+          }
+        }
+      }
+    },
+    "Every month" : {
+      "comment" : "Watering frequency: every month",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatlich"
+          }
+        }
+      }
+    },
+    "Every week" : {
+      "comment" : "Watering frequency: every week",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wöchentlich"
+          }
+        }
+      }
+    },
+    "Months" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monate"
+          }
+        }
+      }
+    },
+    "My Plants" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Pflanzen"
+          }
+        }
+      }
+    },
+    "New Plant" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Pflanze"
+          }
+        }
+      }
+    },
+    "No Plants" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Pflanzen"
+          }
+        }
+      }
+    },
+    "notification.birthday.message" : {
+      "comment" : "Push notification body for plant birthday",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ wird heute %lld! gönn ihr/ihm was Besonderes 🎈"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today %@ turns %lld! give them some extra love 🎈"
+          }
+        }
+      }
+    },
+    "notification.birthday.title" : {
+      "comment" : "Push notification title for plant birthday",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alles Gute zum Geburtstag 🎂"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "happy birthday 🎂"
+          }
+        }
+      }
+    },
+    "notification.message.day0" : {
+      "comment" : "Notification body: due today",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moin, hier ist %@. Durstalarm auf höchster Stufe. Gieß mich bitte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yo %@ here. thirst levels critical. hydration required."
+          }
+        }
+      }
+    },
+    "notification.message.day1" : {
+      "comment" : "Notification body: 1 day overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ist %@ etwa ein Joke für dich? die Erde ist actually schon Staub."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "is %@ a joke to you? soil is literally dust rn."
+          }
+        }
+      }
+    },
+    "notification.message.day2" : {
+      "comment" : "Notification body: 2 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ich throwe Blätter wie ein Pro. %@ braucht dringend Wasser. fr."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dropping leaves like its my job. %@ needs liquid asap."
+          }
+        }
+      }
+    },
+    "notification.message.day3" : {
+      "comment" : "Notification body: 3 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "halloooo?? %@ hier, aus dem Jenseits. Wasser wäre der Hammer gerade."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hello?? %@ checking in from the abyss. water would slap rn."
+          }
+        }
+      }
+    },
+    "notification.message.day4" : {
+      "comment" : "Notification body: 4 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "von meinem Ersteller komplett geghostet. schön für %@. 🤡"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "completely ghosted by my creator. love that for %@. 🤡"
+          }
+        }
+      }
+    },
+    "notification.message.day5" : {
+      "comment" : "Notification body: 5 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "schau %@ an und sag mir, ich sehe glücklich aus. gib mir Wasser. ich begge."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "look at %@ and tell me i look happy. give me the juice. i'm begging."
+          }
+        }
+      }
+    },
+    "notification.message.day6" : {
+      "comment" : "Notification body: 6 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wenn du willst, dass %@ stirbt, sag's einfach. gieß mich, digga."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "if you want %@ dead just say that. hydrate me bro."
+          }
+        }
+      }
+    },
+    "notification.message.day7" : {
+      "comment" : "Notification body: 7 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hilfe! %@ macht gerade einen Speedrun in Verdursten! 🏜 kein Joke."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "help! %@ is speedrunning dehydration! 🏜 not a drill."
+          }
+        }
+      }
+    },
+    "notification.message.day8" : {
+      "comment" : "Notification body: 8 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SOS. Erde trocken. Wurzeln kross. rette %@ bevor ich das Leben rage-quite."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SOS. soil dry. roots crispy. save %@ before i rage quit life."
+          }
+        }
+      }
+    },
+    "notification.message.day9" : {
+      "comment" : "Notification body: 9 days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ich schreib gerade mein Testament. rip %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "writing my will rn. rip %@."
+          }
+        }
+      }
+    },
+    "notification.message.day10" : {
+      "comment" : "Notification body: 10+ days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "offiziell die schlechteste Pflanzenmama. löse mich auf. rip %@. 💀"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "officially the worst plant parent. fading into the void. rip %@. 💀"
+          }
+        }
+      }
+    },
+    "notification.title" : {
+      "comment" : "Push notification title for plant watering reminders",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durstalarm 💧"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hydration check 💧"
+          }
+        }
+      }
+    },
+    "Notifications" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen"
+          }
+        }
+      }
+    },
+    "Notifications Disabled" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungen deaktiviert"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen öffnen"
+          }
+        }
+      }
+    },
+    "Overdue by %lld days" : {
+      "comment" : "Plant card: watering status N days overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Tage überfällig"
+          }
+        }
+      }
+    },
+    "Overdue by 1 day" : {
+      "comment" : "Plant card: watering status 1 day overdue",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Tag überfällig"
+          }
+        }
+      }
+    },
+    "Photo Library" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotomediathek"
+          }
+        }
+      }
+    },
+    "Plant Name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanzenname"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        }
+      }
+    },
+    "Set Interval" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intervall festlegen"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
+    "To receive watering reminders, please enable notifications for this app in System Settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Damit du Gießerinnerungen erhältst, aktiviere die Benachrichtigungen für diese App in den Systemeinstellungen."
+          }
+        }
+      }
+    },
+    "Unit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einheit"
+          }
+        }
+      }
+    },
+    "Value" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wert"
+          }
+        }
+      }
+    },
+    "Water Plant" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pflanze gießen"
+          }
+        }
+      }
+    },
+    "Watering Interval" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gießintervall"
+          }
+        }
+      }
+    },
+    "Watering reminders for your plants are already set up. You will be notified appropriately when a plant needs to be watered, and the messages will become more urgent if overdue." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gießerinnerungen für deine Pflanzen sind bereits eingerichtet. Du wirst benachrichtigt, sobald eine Pflanze Wasser braucht – und die Nachrichten werden dringlicher, je länger es überfällig ist."
+          }
+        }
+      }
+    },
+    "Weeks" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wochen"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
