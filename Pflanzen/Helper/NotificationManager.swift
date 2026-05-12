@@ -48,7 +48,9 @@ class NotificationManager {
             
             // Only schedule if it's in the future
             if let scheduledDate = calendar.date(from: dateComponents), scheduledDate > Date() {
-                scheduleNotification(for: plant, at: dateComponents, overdueDays: dayOffset)
+                // Düngen: nur am exakten Gieß-Tag (dayOffset == 0)
+                let shouldFertilize = dayOffset == 0 && plant.shouldFertilizeOnNextWatering
+                scheduleNotification(for: plant, at: dateComponents, overdueDays: dayOffset, includeFertilize: shouldFertilize)
             }
         }
         
@@ -56,10 +58,14 @@ class NotificationManager {
         scheduleBirthdayNotification(for: plant)
     }
     
-    private func scheduleNotification(for plant: Plant, at components: DateComponents, overdueDays: Int) {
+    private func scheduleNotification(for plant: Plant, at components: DateComponents, overdueDays: Int, includeFertilize: Bool = false) {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "notification.title", defaultValue: "hydration check 💧", comment: "Push notification title for plant watering reminders")
-        content.body = NotificationSettings.shared.messageFor(overdueDays: overdueDays, plantName: plant.name)
+        var body = NotificationSettings.shared.messageFor(overdueDays: overdueDays, plantName: plant.name)
+        if includeFertilize {
+            body += " " + String(localized: "notification.fertilize.hint", defaultValue: "also time to fertilize! 🌿", comment: "Appended to notification when fertilizing is due")
+        }
+        content.body = body
         content.sound = .default
         
         let id = "\(plant.uuid.uuidString)-\(overdueDays)"

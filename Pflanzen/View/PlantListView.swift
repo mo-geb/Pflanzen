@@ -7,7 +7,7 @@ struct PlantListView: View {
     @State private var showingAddPlant = false
     @State private var showingSettings = false
     @State private var selectedPlant: Plant?
-
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -26,9 +26,10 @@ struct PlantListView: View {
                         }
                     }
                 }
-                .padding()
             }
+            .padding()
             .navigationTitle("My Plants")
+            .background(Color(.systemGroupedBackground))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingAddPlant = true }) {
@@ -67,4 +68,3 @@ struct PlantListView: View {
     PlantListView()
         .withPreviewContainer()
 }
-

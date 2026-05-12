@@ -38,10 +38,10 @@
       }
     },
     "🎂" : {
-
+      "shouldTranslate" : false
     },
     "🎈" : {
-
+      "shouldTranslate" : false
     },
     "1 day" : {
       "comment" : "Plant age: singular day",
@@ -302,6 +302,28 @@
         }
       }
     },
+    "Every %lldth watering" : {
+      "comment" : "Fertilize: every Nth",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeden %lld. Gießgang"
+          }
+        }
+      }
+    },
+    "Every 2nd watering" : {
+      "comment" : "Fertilize: every 2nd",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeden 2. Gießgang"
+          }
+        }
+      }
+    },
     "Every day" : {
       "comment" : "Watering frequency: every day",
       "localizations" : {
@@ -331,6 +353,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wöchentlich"
+          }
+        }
+      }
+    },
+    "Fertilizing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düngen"
+          }
+        }
+      }
+    },
+    "Fertilizing Interval" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düngeintervall"
           }
         }
       }
@@ -409,13 +451,31 @@
         }
       }
     },
+    "notification.fertilize.hint" : {
+      "comment" : "Appended to notification when fertilizing is due",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "und düngen wäre auch fällig! 🌿"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "also time to fertilize! 🌿"
+          }
+        }
+      }
+    },
     "notification.message.day0" : {
       "comment" : "Notification body: due today",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "moin, hier ist %@. Durstalarm auf höchster Stufe. Gieß mich bitte."
+            "value" : "hey, hier ist %@. ich hab Durst. gieß mich heute noch, bitte."
           }
         },
         "en" : {
@@ -432,7 +492,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ist %@ etwa ein Joke für dich? die Erde ist actually schon Staub."
+            "value" : "ist %@ ein Witz für dich? die Erde ist schon knochentrocken."
           }
         },
         "en" : {
@@ -449,7 +509,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ich throwe Blätter wie ein Pro. %@ braucht dringend Wasser. fr."
+            "value" : "ich schmeiß Blätter als wär's Herbst. %@ braucht jetzt sofort Wasser."
           }
         },
         "en" : {
@@ -466,7 +526,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "halloooo?? %@ hier, aus dem Jenseits. Wasser wäre der Hammer gerade."
+            "value" : "halloooo?? %@ hier, meld mich aus dem Jenseits. Wasser wäre jetzt das Schönste."
           }
         },
         "en" : {
@@ -483,7 +543,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "von meinem Ersteller komplett geghostet. schön für %@. 🤡"
+            "value" : "von meinem Besitzer komplett geghostet. herzlichen Glückwunsch, %@. 🤡"
           }
         },
         "en" : {
@@ -500,7 +560,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "schau %@ an und sag mir, ich sehe glücklich aus. gib mir Wasser. ich begge."
+            "value" : "schau dir %@ an und sag mir ich seh zufrieden aus. gieß mich. ich flehe dich an."
           }
         },
         "en" : {
@@ -534,7 +594,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "hilfe! %@ macht gerade einen Speedrun in Verdursten! 🏜 kein Joke."
+            "value" : "hilfe! %@ macht gerade einen Speedrun im Verdursten! 🏜 kein Spaß."
           }
         },
         "en" : {
@@ -551,7 +611,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "SOS. Erde trocken. Wurzeln kross. rette %@ bevor ich das Leben rage-quite."
+            "value" : "SOS. Erde trocken. Wurzeln verdorrt. rette %@, bevor es zu spät ist."
           }
         },
         "en" : {
@@ -585,7 +645,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "offiziell die schlechteste Pflanzenmama. löse mich auf. rip %@. 💀"
+            "value" : "offiziell schlechtste Pflanzenperson ever. ich vergehe. rip %@. 💀"
           }
         },
         "en" : {
@@ -629,6 +689,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Benachrichtigungen deaktiviert"
+          }
+        }
+      }
+    },
+    "Off" : {
+      "comment" : "Fertilizing: disabled",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus"
           }
         }
       }
@@ -741,6 +812,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wert"
+          }
+        }
+      }
+    },
+    "Water & Fertilize" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gießen & Düngen"
           }
         }
       }

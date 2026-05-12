@@ -11,12 +11,14 @@ struct PlantDetailView: View {
     @State private var name: String = ""
     @State private var frequencyUnit: FrequencyUnit = .week
     @State private var frequencyValue: Int = 1
+    @State private var fertilizeEveryNthWatering: Int? = nil
     @State private var dateOfBirth: Date = Date()
     
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var selectedImageData: Data?
     
     @State private var showFrequencyPicker = false
+    @State private var showFertilizePicker = false
     @State private var showingDeleteConfirmation = false
     @State private var showImageActionSheet = false
     @State private var showCamera = false
@@ -68,19 +70,24 @@ struct PlantDetailView: View {
                 
                 // Action Buttons
                 if !isEditing {
+                    let fertilizeNow = plant?.shouldFertilizeOnNextWatering == true
                     Button(action: waterPlant) {
-                        HStack {
+                        HStack(spacing: 8) {
                             Image(systemName: "drop.fill")
-                            Text("Water Plant")
+                            if fertilizeNow {
+                                Image(systemName: "flask.fill")
+                            }
+                            Text(fertilizeNow ? "Water & Fertilize" : "Water Plant")
                                 .fontWeight(.semibold)
                         }
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(Color.blue)
+                        .background(fertilizeNow ? Color.teal : Color.blue)
                         .cornerRadius(14)
                     }
                     .padding(.horizontal)
+                    .animation(.easeInOut(duration: 0.2), value: fertilizeNow)
                 } else if plant != nil {
                     Button(role: .destructive) {
                         showingDeleteConfirmation = true
@@ -139,6 +146,9 @@ struct PlantDetailView: View {
         .sheet(isPresented: $showFrequencyPicker) {
             frequencyPickerSheet
         }
+        .sheet(isPresented: $showFertilizePicker) {
+            fertilizePickerSheet
+        }
         .alert("Delete Plant?", isPresented: $showingDeleteConfirmation) {
             Button("Delete", role: .destructive) {
                 deletePlant()
@@ -165,6 +175,7 @@ struct PlantDetailView: View {
                 name = plant.name
                 frequencyUnit = plant.frequencyUnit
                 frequencyValue = plant.frequencyValue
+                fertilizeEveryNthWatering = plant.fertilizeEveryNthWatering
                 selectedImageData = plant.imageData
                 dateOfBirth = plant.dateOfBirth
                 isEditing = false
@@ -179,6 +190,7 @@ struct PlantDetailView: View {
             name = plant.name
             frequencyUnit = plant.frequencyUnit
             frequencyValue = plant.frequencyValue
+            fertilizeEveryNthWatering = plant.fertilizeEveryNthWatering
             selectedImageData = plant.imageData
             dateOfBirth = plant.dateOfBirth
         }
@@ -260,8 +272,23 @@ struct PlantDetailView: View {
                     .foregroundColor(.secondary)
             }
             .padding()
+            
+            if let n = fertilizeEveryNthWatering {
+                Divider().padding(.leading, 46)
+                
+                HStack {
+                    Image(systemName: "flask.fill")
+                        .foregroundColor(.green)
+                        .frame(width: 30)
+                    Text("Fertilizing")
+                    Spacer()
+                    Text(fertilizeDisplayText(for: n))
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+            }
         }
-        .background(Color(.tertiarySystemGroupedBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(12)
         .padding(.horizontal)
     }
@@ -300,8 +327,31 @@ struct PlantDetailView: View {
                 .foregroundColor(.primary)
             }
             .padding()
+            
+            Divider().padding(.leading, 46)
+            
+            // Fertilizing
+            HStack {
+                Image(systemName: "flask.fill")
+                    .foregroundColor(.green)
+                    .frame(width: 30)
+                Text("Fertilizing")
+                Spacer()
+                Button {
+                    isNameFocused = false
+                    showFertilizePicker = true
+                } label: {
+                    Text(fertilizeEveryNthWatering.map { fertilizeDisplayText(for: $0) } ?? String(localized: "Off", comment: "Fertilizing: disabled"))
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 8)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(8)
+                }
+                .foregroundColor(.primary)
+            }
+            .padding()
         }
-        .background(Color(.tertiarySystemGroupedBackground))
+        .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(12)
         .padding(.horizontal)
     }
@@ -339,6 +389,61 @@ struct PlantDetailView: View {
         .presentationDetents([.height(300)])
     }
     
+    @ViewBuilder
+    private var fertilizePickerSheet: some View {
+        NavigationStack {
+            List {
+                fertilizerRow(
+                    label: String(localized: "Off", comment: "Fertilizing: disabled"),
+                    isSelected: fertilizeEveryNthWatering == nil
+                ) {
+                    fertilizeEveryNthWatering = nil
+                    showFertilizePicker = false
+                }
+                
+                ForEach([2, 3, 4, 5, 6, 8, 10, 12], id: \.self) { n in
+                    fertilizerRow(
+                        label: fertilizeDisplayText(for: n),
+                        isSelected: fertilizeEveryNthWatering == n
+                    ) {
+                        fertilizeEveryNthWatering = n
+                        showFertilizePicker = false
+                    }
+                }
+            }
+            .navigationTitle("Fertilizing Interval")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { showFertilizePicker = false }
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+    
+    @ViewBuilder
+    private func fertilizerRow(label: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+        HStack {
+            Text(label)
+                .foregroundColor(.primary)
+            Spacer()
+            if isSelected {
+                Image(systemName: "checkmark")
+                    .foregroundColor(.green)
+                    .fontWeight(.semibold)
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { action() }
+    }
+    
+    private func fertilizeDisplayText(for n: Int) -> String {
+        n == 2
+            ? String(localized: "Every 2nd watering", comment: "Fertilize: every 2nd")
+            : String(localized: "Every \(n)th watering", comment: "Fertilize: every Nth")
+    }
+    
     // MARK: - Actions
     
     private func waterPlant() {
@@ -356,6 +461,7 @@ struct PlantDetailView: View {
             plant.name = name
             plant.frequencyUnit = frequencyUnit
             plant.frequencyValue = max(1, frequencyValue)
+            plant.fertilizeEveryNthWatering = fertilizeEveryNthWatering
             plant.imageData = selectedImageData
             plant.dateOfBirth = dateOfBirth
             
@@ -365,7 +471,7 @@ struct PlantDetailView: View {
             
             isEditing = false
         } else {
-            let newPlant = Plant(name: name, imageData: selectedImageData, frequencyUnit: frequencyUnit, frequencyValue: max(1, frequencyValue), dateOfBirth: dateOfBirth)
+            let newPlant = Plant(name: name, imageData: selectedImageData, frequencyUnit: frequencyUnit, frequencyValue: max(1, frequencyValue), fertilizeEveryNthWatering: fertilizeEveryNthWatering, dateOfBirth: dateOfBirth)
             modelContext.insert(newPlant)
             NotificationManager.shared.scheduleNotifications(for: newPlant)
             dismiss()

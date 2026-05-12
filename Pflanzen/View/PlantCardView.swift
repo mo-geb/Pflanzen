@@ -69,12 +69,13 @@ struct PlantCardView: View {
                 Button {
                     waterPlant()
                 } label: {
-                    Image(systemName: "drop.fill")
+                    Image(systemName: plant.shouldFertilizeOnNextWatering ? "flask.fill" : "drop.fill")
                         .font(.system(size: 24))
                         .foregroundColor(.white)
                         .padding()
-                        .background(Circle().fill(Color.blue))
+                        .background(Circle().fill(plant.shouldFertilizeOnNextWatering ? Color.teal : Color.blue))
                         .shadow(radius: 5)
+                        .animation(.easeInOut(duration: 0.2), value: plant.shouldFertilizeOnNextWatering)
                 }
             }
             .padding()

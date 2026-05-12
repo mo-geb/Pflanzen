@@ -27,17 +27,26 @@ struct SettingsView: View {
                         .tint(.blue)
                     }
                     .padding(.vertical, 4)
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Automatic Reminders")
+                            .font(.headline)
+                        Text("Watering reminders for your plants are already set up. You will be notified appropriately when a plant needs to be watered, and the messages will become more urgent if overdue.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.vertical, 4)
                 }
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Automatic Reminders")
-                        .font(.headline)
-                    Text("Watering reminders for your plants are already set up. You will be notified appropriately when a plant needs to be watered, and the messages will become more urgent if overdue.")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .padding(.vertical, 4)
             }
+            
+            Section {
+                HStack {
+                    Spacer()
+                    versionInfo
+                    Spacer()
+                }
+            }
+            .listRowBackground(Color.clear)
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
@@ -56,6 +65,27 @@ struct SettingsView: View {
                 notificationManager.checkPermission()
             }
         }
+    }
+    
+    @ViewBuilder
+    var versionInfo: some View {
+        Text(Bundle.main.fullVersionString)
+            .font(.caption)
+            .foregroundStyle(.secondary)
+    }
+}
+
+extension Bundle {
+    var appVersion: String {
+        infoDictionary?["CFBundleShortVersionString"] as? String ?? "N/A"
+    }
+
+    var buildNumber: String {
+        infoDictionary?["CFBundleVersion"] as? String ?? "N/A"
+    }
+
+    var fullVersionString: String {
+        "v\(appVersion) (Build \(buildNumber))"
     }
 }
 

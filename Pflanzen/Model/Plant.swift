@@ -11,20 +11,41 @@ final class Plant: Identifiable {
     var frequencyUnit: FrequencyUnit = FrequencyUnit.week
     var frequencyValue: Int = 1
     
+    /// Düngen jede N-te Bewässerung. nil = Düngen deaktiviert.
+    var fertilizeEveryNthWatering: Int? = nil
+    /// Zählt alle bisherigen Bewässerungen (für Dünge-Berechnung).
+    var wateringCount: Int = 0
+    
     var nextWateringDate: Date = Date()
     var dateOfBirth: Date = Date()
     
-    init(name: String, imageData: Data? = nil, frequencyUnit: FrequencyUnit = .week, frequencyValue: Int = 1, dateOfBirth: Date = Date()) {
+    init(name: String, imageData: Data? = nil, frequencyUnit: FrequencyUnit = .week, frequencyValue: Int = 1, fertilizeEveryNthWatering: Int? = nil, dateOfBirth: Date = Date()) {
         self.name = name
         self.imageData = imageData
         self.frequencyUnit = frequencyUnit
         self.frequencyValue = frequencyValue
+        self.fertilizeEveryNthWatering = fertilizeEveryNthWatering
         self.dateOfBirth = dateOfBirth
         self.nextWateringDate = Plant.calculateNextDate(from: Date(), unit: frequencyUnit, value: frequencyValue)
     }
     
     func waterPlant() {
+        self.wateringCount += 1
         self.nextWateringDate = Plant.calculateNextDate(from: Date(), unit: self.frequencyUnit, value: self.frequencyValue)
+    }
+    
+    /// true wenn beim nächsten Gießen auch gedüngt werden soll.
+    var shouldFertilizeOnNextWatering: Bool {
+        guard let n = fertilizeEveryNthWatering, n > 0 else { return false }
+        // wateringCount ist der Stand *vor* dem nächsten Gießen,
+        // d.h. nach dem Gießen wäre er wateringCount+1.
+        return (wateringCount + 1) % n == 0
+    }
+    
+    /// true wenn die Pflanze heute (am Gieß-Tag) auch gedüngt werden muss.
+    var shouldFertilizeToday: Bool {
+        guard let n = fertilizeEveryNthWatering, n > 0 else { return false }
+        return wateringCount % n == 0 && wateringCount > 0
     }
     
     static func calculateNextDate(from date: Date, unit: FrequencyUnit, value: Int) -> Date {
@@ -54,6 +75,7 @@ final class Plant: Identifiable {
     }
     
     var isBirthday: Bool {
+        guard age >= 1 else { return false }
         let calendar = Calendar.current
         let today = calendar.dateComponents([.month, .day], from: Date())
         let birth = calendar.dateComponents([.month, .day], from: dateOfBirth)
