@@ -31,12 +31,12 @@ struct PlantListView: View {
             .navigationTitle("My Plants")
             .background(Color(.systemGroupedBackground))
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button(action: { showingAddPlant = true }) {
                         Label("Add Plant", systemImage: "plus")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(action: { showingSettings = true }) {
                         Label("Settings", systemImage: "gear")
                     }

@@ -26,7 +26,7 @@ struct PlantCardView: View {
                     .overlay(
                         Image(systemName: "leaf.fill")
                             .font(.system(size: 60))
-                            .foregroundColor(.green.opacity(0.6))
+                            .foregroundStyle(.green.opacity(0.6))
                     )
             }
             
@@ -49,16 +49,16 @@ struct PlantCardView: View {
                         Text(plant.name)
                             .font(.title)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                     }
                     
                     HStack(spacing: 6) {
                         Image(systemName: plant.isOverdue ? "exclamationmark.triangle.fill" : "calendar")
-                            .foregroundColor(plant.isOverdue ? .red : .white.opacity(0.8))
+                            .foregroundStyle(plant.isOverdue ? .red : .white.opacity(0.8))
                         
                         Text(statusText)
                             .font(.subheadline)
-                            .foregroundColor(plant.isOverdue ? .red : .white.opacity(0.8))
+                            .foregroundStyle(plant.isOverdue ? .red : .white.opacity(0.8))
                             .fontWeight(plant.isOverdue ? .bold : .regular)
                     }
                 }
@@ -71,7 +71,7 @@ struct PlantCardView: View {
                 } label: {
                     Image(systemName: plant.shouldFertilizeOnNextWatering ? "flask.fill" : "drop.fill")
                         .font(.system(size: 24))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .padding()
                         .background(Circle().fill(plant.shouldFertilizeOnNextWatering ? Color.teal : Color.blue))
                         .shadow(radius: 5)
@@ -80,7 +80,7 @@ struct PlantCardView: View {
             }
             .padding()
         }
-        .cornerRadius(20)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 5)
         .overlay(alignment: .topTrailing) {
             if plant.isBirthday {

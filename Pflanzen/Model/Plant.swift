@@ -1,9 +1,8 @@
 import Foundation
 import SwiftData
-import SwiftUI
 
 @Model
-final class Plant: Identifiable {
+final class Plant {
     var name: String = ""
     var uuid: UUID = UUID()
     @Attribute(.externalStorage) var imageData: Data?

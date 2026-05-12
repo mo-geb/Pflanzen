@@ -57,7 +57,7 @@ struct PlantDetailView: View {
                     if let plant = plant {
                         Text(plant.ageString)
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                 }
                 
@@ -80,11 +80,10 @@ struct PlantDetailView: View {
                             Text(fertilizeNow ? "Water & Fertilize" : "Water Plant")
                                 .fontWeight(.semibold)
                         }
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(fertilizeNow ? Color.teal : Color.blue)
-                        .cornerRadius(14)
+                        .background(fertilizeNow ? Color.teal : Color.blue, in: RoundedRectangle(cornerRadius: 14))
                     }
                     .padding(.horizontal)
                     .animation(.easeInOut(duration: 0.2), value: fertilizeNow)
@@ -97,11 +96,10 @@ struct PlantDetailView: View {
                             Text("Delete Plant")
                                 .fontWeight(.semibold)
                         }
-                        .foregroundColor(.red)
+                        .foregroundStyle(.red)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 14)
-                        .background(Color.red.opacity(0.15))
-                        .cornerRadius(14)
+                        .background(Color.red.opacity(0.15), in: RoundedRectangle(cornerRadius: 14))
                     }
                     .padding(.horizontal)
                 }
@@ -117,7 +115,7 @@ struct PlantDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if isEditing {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     if plant != nil {
                         Button("Cancel") {
                             isEditing = false
@@ -127,16 +125,16 @@ struct PlantDetailView: View {
                         Button("Cancel", action: { dismiss() })
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Save", action: save)
                         .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
                         .bold()
                 }
             } else {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button("Close", action: { dismiss() })
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Edit") {
                         isEditing = true
                     }
@@ -214,7 +212,7 @@ struct PlantDetailView: View {
                 .overlay(
                     Image(systemName: "camera.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.gray)
                 )
         }
     }
@@ -250,12 +248,12 @@ struct PlantDetailView: View {
             // Birthday
             HStack {
                 Image(systemName: "gift")
-                    .foregroundColor(.blue)
+                    .foregroundStyle(.blue)
                     .frame(width: 30)
                 Text("Birthday")
                 Spacer()
                 Text(dateOfBirth.formatted(date: .abbreviated, time: .omitted))
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
             .padding()
             
@@ -264,12 +262,12 @@ struct PlantDetailView: View {
             // Interval
             HStack {
                 Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    .foregroundColor(.blue)
+                    .foregroundStyle(.blue)
                     .frame(width: 30)
                 Text("Watering Interval")
                 Spacer()
                 Text(frequencyUnit.displayText(for: frequencyValue))
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
             .padding()
             
@@ -278,18 +276,17 @@ struct PlantDetailView: View {
                 
                 HStack {
                     Image(systemName: "flask.fill")
-                        .foregroundColor(.green)
+                        .foregroundStyle(.green)
                         .frame(width: 30)
                     Text("Fertilizing")
                     Spacer()
                     Text(fertilizeDisplayText(for: n))
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(.secondary)
                 }
                 .padding()
             }
         }
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(12)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal)
     }
 
@@ -299,7 +296,7 @@ struct PlantDetailView: View {
             // Birthday
             HStack {
                 Image(systemName: "gift")
-                    .foregroundColor(.blue)
+                    .foregroundStyle(.blue)
                     .frame(width: 30)
                 DatePicker("Birthday", selection: $dateOfBirth, displayedComponents: .date)
             }
@@ -310,7 +307,7 @@ struct PlantDetailView: View {
             // Interval
             HStack {
                 Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    .foregroundColor(.blue)
+                    .foregroundStyle(.blue)
                     .frame(width: 30)
                 Text("Watering Interval")
                 Spacer()
@@ -321,10 +318,9 @@ struct PlantDetailView: View {
                     Text(frequencyUnit.displayText(for: frequencyValue))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(8)
+                        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 8))
                 }
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
             }
             .padding()
             
@@ -333,7 +329,7 @@ struct PlantDetailView: View {
             // Fertilizing
             HStack {
                 Image(systemName: "flask.fill")
-                    .foregroundColor(.green)
+                    .foregroundStyle(.green)
                     .frame(width: 30)
                 Text("Fertilizing")
                 Spacer()
@@ -344,15 +340,13 @@ struct PlantDetailView: View {
                     Text(fertilizeEveryNthWatering.map { fertilizeDisplayText(for: $0) } ?? String(localized: "Off", comment: "Fertilizing: disabled"))
                         .padding(.horizontal, 12)
                         .padding(.vertical, 8)
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(8)
+                        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 8))
                 }
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
             }
             .padding()
         }
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(12)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
         .padding(.horizontal)
     }
     
@@ -401,7 +395,7 @@ struct PlantDetailView: View {
                     showFertilizePicker = false
                 }
                 
-                ForEach([2, 3, 4, 5, 6, 8, 10, 12], id: \.self) { n in
+                ForEach([1, 2, 3, 4, 5, 6, 8, 10, 12], id: \.self) { n in
                     fertilizerRow(
                         label: fertilizeDisplayText(for: n),
                         isSelected: fertilizeEveryNthWatering == n
@@ -426,11 +420,11 @@ struct PlantDetailView: View {
     private func fertilizerRow(label: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
         HStack {
             Text(label)
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
             Spacer()
             if isSelected {
                 Image(systemName: "checkmark")
-                    .foregroundColor(.green)
+                    .foregroundStyle(.green)
                     .fontWeight(.semibold)
             }
         }
@@ -439,9 +433,11 @@ struct PlantDetailView: View {
     }
     
     private func fertilizeDisplayText(for n: Int) -> String {
-        n == 2
-            ? String(localized: "Every 2nd watering", comment: "Fertilize: every 2nd")
-            : String(localized: "Every \(n)th watering", comment: "Fertilize: every Nth")
+        switch n {
+        case 1:  return String(localized: "Every watering", comment: "Fertilize: every watering")
+        case 2:  return String(localized: "Every 2nd watering", comment: "Fertilize: every 2nd")
+        default: return String(localized: "Every \(n)th watering", comment: "Fertilize: every Nth")
+        }
     }
     
     // MARK: - Actions
@@ -458,15 +454,17 @@ struct PlantDetailView: View {
     
     private func save() {
         if let plant = plant {
+            let frequencyChanged = plant.frequencyUnit != frequencyUnit || plant.frequencyValue != frequencyValue
             plant.name = name
             plant.frequencyUnit = frequencyUnit
             plant.frequencyValue = max(1, frequencyValue)
             plant.fertilizeEveryNthWatering = fertilizeEveryNthWatering
             plant.imageData = selectedImageData
             plant.dateOfBirth = dateOfBirth
-            
-            // Reschedule since interval might have changed
-            plant.nextWateringDate = Plant.calculateNextDate(from: Date(), unit: plant.frequencyUnit, value: plant.frequencyValue)
+
+            if frequencyChanged {
+                plant.nextWateringDate = Plant.calculateNextDate(from: Date(), unit: plant.frequencyUnit, value: plant.frequencyValue)
+            }
             NotificationManager.shared.scheduleNotifications(for: plant)
             
             isEditing = false

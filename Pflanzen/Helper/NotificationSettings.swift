@@ -1,11 +1,7 @@
 import Foundation
 
-class NotificationSettings {
-    static let shared = NotificationSettings()
-    
-    private init() {}
-    
-    func messageFor(overdueDays: Int, plantName: String) -> String {
+enum NotificationSettings {
+    static func messageFor(overdueDays: Int, plantName: String) -> String {
         let index = min(max(overdueDays, 0), 10)
         let template: String
         switch index {
@@ -24,4 +20,3 @@ class NotificationSettings {
         return String(format: template, plantName)
     }
 }
-

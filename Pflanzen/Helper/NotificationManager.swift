@@ -14,18 +14,19 @@ class NotificationManager {
     }
     
     func requestPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            DispatchQueue.main.async {
-                self.hasPermission = granted
+        Task {
+            do {
+                hasPermission = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+            } catch {
+                hasPermission = false
             }
         }
     }
-    
+
     func checkPermission() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            DispatchQueue.main.async {
-                self.hasPermission = settings.authorizationStatus == .authorized
-            }
+        Task {
+            let settings = await UNUserNotificationCenter.current().notificationSettings()
+            hasPermission = settings.authorizationStatus == .authorized
         }
     }
     
@@ -61,7 +62,7 @@ class NotificationManager {
     private func scheduleNotification(for plant: Plant, at components: DateComponents, overdueDays: Int, includeFertilize: Bool = false) {
         let content = UNMutableNotificationContent()
         content.title = String(localized: "notification.title", defaultValue: "hydration check 💧", comment: "Push notification title for plant watering reminders")
-        var body = NotificationSettings.shared.messageFor(overdueDays: overdueDays, plantName: plant.name)
+        var body = NotificationSettings.messageFor(overdueDays: overdueDays, plantName: plant.name)
         if includeFertilize {
             body += " " + String(localized: "notification.fertilize.hint", defaultValue: "also time to fertilize! 🌿", comment: "Appended to notification when fertilizing is due")
         }

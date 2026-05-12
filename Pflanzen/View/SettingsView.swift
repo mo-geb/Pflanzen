@@ -12,10 +12,10 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Notifications Disabled")
                             .font(.headline)
-                            .foregroundColor(.red)
+                            .foregroundStyle(.red)
                         Text("To receive watering reminders, please enable notifications for this app in System Settings.")
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                         
                         Button("Open Settings") {
                             if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -33,7 +33,7 @@ struct SettingsView: View {
                             .font(.headline)
                         Text("Watering reminders for your plants are already set up. You will be notified appropriately when a plant needs to be watered, and the messages will become more urgent if overdue.")
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(.secondary)
                     }
                     .padding(.vertical, 4)
                 }
@@ -51,7 +51,7 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .topBarTrailing) {
                 Button("Done") {
                     dismiss()
                 }
