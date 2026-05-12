@@ -346,6 +346,9 @@
         }
       }
     },
+    "Every watering" : {
+      "comment" : "Fertilize: every watering"
+    },
     "Every week" : {
       "comment" : "Watering frequency: every week",
       "localizations" : {
@@ -406,6 +409,9 @@
           }
         }
       }
+    },
+    "Next Watering" : {
+
     },
     "No Plants" : {
       "localizations" : {

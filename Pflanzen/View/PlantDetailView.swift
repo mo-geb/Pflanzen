@@ -13,6 +13,7 @@ struct PlantDetailView: View {
     @State private var frequencyValue: Int = 1
     @State private var fertilizeEveryNthWatering: Int? = nil
     @State private var dateOfBirth: Date = Date()
+    @State private var nextWateringDate: Date = Date()
     
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var selectedImageData: Data?
@@ -176,8 +177,10 @@ struct PlantDetailView: View {
                 fertilizeEveryNthWatering = plant.fertilizeEveryNthWatering
                 selectedImageData = plant.imageData
                 dateOfBirth = plant.dateOfBirth
+                nextWateringDate = plant.nextWateringDate
                 isEditing = false
             } else {
+                nextWateringDate = Plant.calculateNextDate(from: Date(), unit: frequencyUnit, value: frequencyValue)
                 isEditing = true
             }
         }
@@ -191,6 +194,7 @@ struct PlantDetailView: View {
             fertilizeEveryNthWatering = plant.fertilizeEveryNthWatering
             selectedImageData = plant.imageData
             dateOfBirth = plant.dateOfBirth
+            nextWateringDate = plant.nextWateringDate
         }
     }
     
@@ -271,9 +275,23 @@ struct PlantDetailView: View {
             }
             .padding()
             
+            Divider().padding(.leading, 46)
+
+            // Next Watering
+            HStack {
+                Image(systemName: "drop.fill")
+                    .foregroundStyle(.blue)
+                    .frame(width: 30)
+                Text("Next Watering")
+                Spacer()
+                Text(nextWateringDate.formatted(date: .abbreviated, time: .omitted))
+                    .foregroundStyle(.secondary)
+            }
+            .padding()
+
             if let n = fertilizeEveryNthWatering {
                 Divider().padding(.leading, 46)
-                
+
                 HStack {
                     Image(systemName: "flask.fill")
                         .foregroundStyle(.green)
@@ -325,7 +343,18 @@ struct PlantDetailView: View {
             .padding()
             
             Divider().padding(.leading, 46)
-            
+
+            // Next Watering
+            HStack {
+                Image(systemName: "drop.fill")
+                    .foregroundStyle(.blue)
+                    .frame(width: 30)
+                DatePicker("Next Watering", selection: $nextWateringDate, displayedComponents: .date)
+            }
+            .padding()
+
+            Divider().padding(.leading, 46)
+
             // Fertilizing
             HStack {
                 Image(systemName: "flask.fill")
@@ -447,6 +476,7 @@ struct PlantDetailView: View {
         generator.notificationOccurred(.success)
         withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
             plant.waterPlant()
+            nextWateringDate = plant.nextWateringDate
             NotificationManager.shared.scheduleNotifications(for: plant)
             try? modelContext.save()
         }
@@ -454,22 +484,18 @@ struct PlantDetailView: View {
     
     private func save() {
         if let plant = plant {
-            let frequencyChanged = plant.frequencyUnit != frequencyUnit || plant.frequencyValue != frequencyValue
             plant.name = name
             plant.frequencyUnit = frequencyUnit
             plant.frequencyValue = max(1, frequencyValue)
             plant.fertilizeEveryNthWatering = fertilizeEveryNthWatering
             plant.imageData = selectedImageData
             plant.dateOfBirth = dateOfBirth
-
-            if frequencyChanged {
-                plant.nextWateringDate = Plant.calculateNextDate(from: Date(), unit: plant.frequencyUnit, value: plant.frequencyValue)
-            }
+            plant.nextWateringDate = nextWateringDate
             NotificationManager.shared.scheduleNotifications(for: plant)
-            
             isEditing = false
         } else {
             let newPlant = Plant(name: name, imageData: selectedImageData, frequencyUnit: frequencyUnit, frequencyValue: max(1, frequencyValue), fertilizeEveryNthWatering: fertilizeEveryNthWatering, dateOfBirth: dateOfBirth)
+            newPlant.nextWateringDate = nextWateringDate
             modelContext.insert(newPlant)
             NotificationManager.shared.scheduleNotifications(for: newPlant)
             dismiss()
